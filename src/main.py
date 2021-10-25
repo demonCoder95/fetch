@@ -23,6 +23,17 @@ parser.add_argument('--metadata', action='store_true',
 # parse the arguments on the CLI
 args = parser.parse_args()
 
+# create a URL Fetcher
+fetcher = fetch.URLFetcher()
+
 # Fetch all URLs passed to the program
 for each_url in args.urls:
-    fetch.fetch_url(each_url)
+    # set the URL to fetch
+    fetcher.url = each_url
+    # invoke the fetcher and retrieve the URL
+    fetcher.fetch_url()
+    # retrieve metadata if asked
+    if args.metadata:
+        fetcher.parse_metadata()
+        # print the metadata on the terminal
+        fetcher.print_metadata()
