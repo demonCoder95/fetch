@@ -26,6 +26,25 @@ of the URl as well. Example:
     last_fetch: Mon Oct 25 16:52:20 2021
 ```
 
+## Using the Dockerfile
+
+The project comes with a Dockerfile which allows you to use the program through
+a Docker environment. First, you need to build the program image:
+
+``` bash
+    docker build -t fetcher-app .
+```
+
+when the image is done building, you can invoke the program in a Docker
+environment with:
+
+``` bash
+    docker run fetcher-app python3 src/main.py --metadata https://google.com/
+```
+
+This will start a container in your local docker environment and run the program
+in it.
+
 ## Future Improvements
 
 Add multithreading to accelerate the URL fetching with a new class that
